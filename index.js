@@ -1,3 +1,5 @@
+const { promises } = require('fs');
+
 const server = require('http').createServer();
 const io = require('socket.io')(server);
 io.on('connection', client => {
@@ -5,4 +7,4 @@ io.on('connection', client => {
   client.on('event', data => { console.log("data")});
   client.on('disconnect', () => { /* … */ });
 });
-server.listen(3000);
+server.listen(process.env.PORT || 3000);
